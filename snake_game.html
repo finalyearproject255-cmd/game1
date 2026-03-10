@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Snake Game</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="snake_game.css"/>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo-box">🐍</div>
+    <div>
+      <div class="logo-title">Snake Game</div>
+      <div class="logo-sub">CS Mini Project</div>
+    </div>
+  </div>
+  <span class="badge">Final Year Presentation</span>
+</div>
+
+<div class="page-header">
+  <h1>Snake Game</h1>
+  <p>Eat food · Grow longer · Don't crash</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat"><span class="stat-val" id="score">0</span><span class="stat-label">Score</span></div>
+  <div class="stat"><span class="stat-val" id="length">1</span><span class="stat-label">Length</span></div>
+  <div class="stat"><span class="stat-val" id="best">0</span><span class="stat-label">Best</span></div>
+</div>
+
+<div class="speed-row">
+  <button class="speed-btn active" onclick="setSpeed(150,this)">Slow</button>
+  <button class="speed-btn" onclick="setSpeed(100,this)">Normal</button>
+  <button class="speed-btn" onclick="setSpeed(60,this)">Fast</button>
+  <button class="speed-btn" onclick="setSpeed(35,this)">Insane</button>
+</div>
+
+<div class="canvas-wrap" id="canvas-wrap">
+  <canvas id="snake-canvas"></canvas>
+  <div class="canvas-overlay" id="canvas-overlay">
+    <div class="overlay-emoji">🐍</div>
+    <div class="overlay-title" id="overlay-title">Ready to Play?</div>
+    <div class="overlay-sub" id="overlay-sub">Use arrow keys or buttons below</div>
+    <div id="overlay-score"></div>
+    <button class="btn btn-dark" onclick="startGame()">▶ Start Game</button>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn btn-dark" onclick="startGame()">▶ Start</button>
+  <button class="btn btn-outline" onclick="pauseGame()">⏸ Pause</button>
+</div>
+
+<div class="arrow-pad">
+  <div></div>
+  <button class="arrow-btn" onclick="changeDir(0,-1)">▲</button>
+  <div></div>
+  <button class="arrow-btn" onclick="changeDir(-1,0)">◀</button>
+  <button class="arrow-btn" onclick="changeDir(0,1)">▼</button>
+  <button class="arrow-btn" onclick="changeDir(1,0)">▶</button>
+</div>
+
+<div class="kbd-hint"><kbd>↑ ↓ ← →</kbd> or <kbd>W A S D</kbd> to move &nbsp;·&nbsp; <kbd>Space</kbd> to start/pause</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#2d7a2d"></div>Snake Head</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#5ab85a"></div>Snake Body</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e74c3c"></div>Food (+10)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f39c12"></div>Bonus (+30)</div>
+</div>
+
+<script src="snake_game.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f5f5f0;
+    color: #1a1a1a;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0.9rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 0.8rem; }
+  .logo-box {
+    width: 32px; height: 32px;
+    background: #1a1a1a; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .logo-title { font-size: 0.95rem; font-weight: 700; }
+  .logo-sub { font-size: 0.72rem; color: #888; margin-top: 1px; }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; padding: 0.25rem 0.65rem;
+    border: 1px solid #ddd; border-radius: 20px;
+    color: #666; letter-spacing: 0.04em;
+  }
+
+  /* PAGE HEADER */
+  .page-header { text-align: center; padding: 2.5rem 1rem 1.2rem; }
+  .page-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+  .page-header p { font-size: 0.85rem; color: #888; font-family: 'DM Mono', monospace; }
+
+  /* STATS */
+  .stats-row {
+    display: flex; gap: 1px;
+    background: #e0e0e0; border: 1px solid #e0e0e0;
+    border-radius: 10px; overflow: hidden;
+    margin-bottom: 1.2rem; width: fit-content;
+  }
+  .stat { background: #fff; padding: 0.8rem 2rem; text-align: center; min-width: 90px; }
+  .stat-val { font-size: 1.5rem; font-weight: 700; display: block; font-variant-numeric: tabular-nums; }
+  .stat-label { font-size: 0.65rem; color: #aaa; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+  /* SPEED */
+  .speed-row { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; justify-content: center; }
+  .speed-btn {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    padding: 0.4rem 1rem; border: 1px solid #ddd; border-radius: 6px;
+    background: #fff; color: #888; cursor: pointer; transition: all 0.15s;
+  }
+  .speed-btn:hover { border-color: #bbb; color: #444; }
+  .speed-btn.active { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+
+  /* CANVAS */
+  .canvas-wrap {
+    position: relative;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    margin-bottom: 1rem;
+  }
+  canvas { display: block; }
+
+  /* OVERLAY */
+  .canvas-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.8rem;
+    background: rgba(255,255,255,0.93); backdrop-filter: blur(4px);
+    transition: opacity 0.25s;
+    text-align: center; padding: 1.5rem;
+  }
+  .canvas-overlay.hidden { opacity: 0; pointer-events: none; }
+  .overlay-emoji { font-size: 2.5rem; }
+  .overlay-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+  .overlay-sub { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #888; }
+  #overlay-score { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: #555; }
+
+  /* BUTTONS */
+  .controls { display: flex; gap: 0.6rem; margin-bottom: 0.8rem; }
+  .btn {
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+    padding: 0.55rem 1.4rem; border-radius: 7px;
+    cursor: pointer; transition: all 0.15s; border: 1.5px solid;
+  }
+  .btn-dark { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .btn-dark:hover { background: #333; }
+  .btn-outline { background: #fff; color: #555; border-color: #ddd; }
+  .btn-outline:hover { border-color: #bbb; color: #1a1a1a; }
+
+  /* ARROW PAD */
+  .arrow-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 48px);
+    grid-template-rows: repeat(2, 48px);
+    gap: 5px; margin-bottom: 1.5rem;
+  }
+  .arrow-btn {
+    width: 48px; height: 48px;
+    background: #fff; border: 1.5px solid #e0e0e0;
+    color: #555; font-size: 1.1rem; border-radius: 7px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.12s; user-select: none;
+  }
+  .arrow-btn:hover, .arrow-btn:active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+  /* LEGEND */
+  .legend {
+    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+    padding: 0 1rem 2rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #888; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  /* KEYBOARD HINT */
+  .kbd-hint { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #bbb; margin-bottom: 0.6rem; }
+  kbd { background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; padding: 0.1rem 0.4rem; font-size: 0.65rem; }
